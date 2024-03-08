@@ -196,7 +196,8 @@ func main() {
 	// other files
 	otherFiles := []string{
 		"/lib/ffmpeg-core.js","/lib/ffmpeg-core.wasm","/lib/ffmpeg-core.worker.js","/dist/spbots.min.js","/res/ra2cd.mix",
-		"/dist/ffmpeg.min.js","/dist/ffmped-core.js","/dist/ffmpeg-core.wasm","/servers.ini","/res/locale/zh-CN.json","/res/img/cd-logo.png","/dist/workerVxl.js"}
+		"/dist/ffmpeg.min.js","/dist/7zz.js","/dist/7zz.wasm",
+		"/dist/ffmped-core.js","/dist/ffmpeg-core.wasm","/servers.ini","/res/locale/zh-CN.json","/res/img/cd-logo.png","/dist/workerVxl.js"}
 	for _,ofile := range otherFiles {
 		files = append(files, fmt.Sprintf("%s/%s", *flags.Domain,ofile))
 	}
