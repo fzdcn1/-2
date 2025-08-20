@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
-
+	"time"
 	"golang.org/x/net/html"
 )
 
@@ -43,7 +43,7 @@ type Page struct {
 
 // getLinks Get the links from a HTML site
 func (s *Scraper) getLinks(domain string) (page Page, attachments []string, version string, err error) {
-	req, _ := http.NewRequest("GET", *flags.Domain, nil)
+	req, _ := http.NewRequest("GET", domain, nil)
 
 req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
 
