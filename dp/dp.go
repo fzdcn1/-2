@@ -20,6 +20,7 @@ func RecordNetwork(cdUrl string) []string {
 		chromedp.DisableGPU,
 		chromedp.NoDefaultBrowserCheck,
 		//chromedp.Flag("headless", false),
+				   chromedp.Flag("no-sandbox", true),
 		chromedp.Flag("ignore-certificate-errors", true),
 		chromedp.Flag("window-size", "800,600"),
 		chromedp.UserDataDir(dir),
