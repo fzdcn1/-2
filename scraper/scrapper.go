@@ -43,9 +43,17 @@ type Page struct {
 
 // getLinks Get the links from a HTML site
 func (s *Scraper) getLinks(domain string) (page Page, attachments []string, version string, err error) {
-	resp, err := http.Get(domain)
-	if err != nil {
-		return
+	req, _ := http.NewRequest("GET", *flags.Domain, nil)
+
+req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
+
+client := &http.Client{
+    Timeout: 15 * time.Second,
+}
+resp, err1 := client.Do(req)
+	if err1 != nil {
+		log.Println(err1)
+		return 
 	}
 	defer resp.Body.Close()
 
