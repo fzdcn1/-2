@@ -90,6 +90,23 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
+	req, err := http.NewRequest("GET", *flags.Domain, nil)
+if err != nil {
+    log.Printf("Error creating request: %v", err)
+    return
+}
+req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36")
+
+client := &http.Client{
+    Timeout: 15 * time.Second,
+}
+resp, err := client.Do(req)
+if err != nil {
+    log.Printf("Network error: %v. Please check your proxy settings and network connectivity.", err)
+    return
+}
+defer resp.Body.Close()
+	
 	scanUrls := dp.RecordNetwork(*flags.Domain)
 
 	// Create directory for downloaded website
